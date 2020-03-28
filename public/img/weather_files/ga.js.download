@@ -1,0 +1,102 @@
+(function() {
+  var Clearbit, providePlugin,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  providePlugin = function(pluginName, pluginConstructor) {
+    var tryApply = function() {
+      var ga = window[window['GoogleAnalyticsObject'] || 'ga'];
+
+      if (typeof ga === 'function') {
+        ga('provide', pluginName, pluginConstructor);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    if (tryApply()) {
+      // Native support
+    } else if (window.analytics && typeof window.analytics.ready === 'function') {
+      // Segment support
+      analytics.ready(tryApply);
+    } else {
+      console.error("Clearbit error: 'ga' variable not found.");
+    }
+  };
+
+  Clearbit = (function() {
+      function Clearbit(tracker, config) {
+        this.tracker = tracker;
+        this.config = config != null ? config : {};
+        this.triggerEvent = bind(this.triggerEvent, this);
+        this.setIPDimensions = bind(this.setIPDimensions, this);
+        this.setDimensions = bind(this.setDimensions, this);
+        this.set = bind(this.set, this);
+        this.done = bind(this.done, this);
+        this.mapping = this.config.mapping || {};
+        this.done({"ip":"45.114.61.210","domain":"wittypen.com","fuzzy":true,"company":{"id":"a845d8f8-b7e6-465d-b506-ce54d8c9a5bb","name":"WittyPen","legalName":"WittyPen Media Services Pvt. Ltd.","domain":"wittypen.com","domainAliases":[],"site":{"phoneNumbers":[],"emailAddresses":[]},"category":{"sector":"Information Technology","industryGroup":"Software \u0026 Services","industry":"Internet Software \u0026 Services","subIndustry":"Internet Software \u0026 Services","sicCode":"73","naicsCode":"54"},"tags":["Technology","Internet","B2B","Marketplace","SAAS","Enterprise"],"description":"WittyPen is best in quality Content Writing and #1 Content Writing Marketplace for your Business. Get SEO optimized content to boost your rankings.","foundedYear":2015,"location":"402, Viman Nagar Rd, Marigold complex, Viman Nagar, Pune, Maharashtra 411014, India","timeZone":"Asia/Kolkata","utcOffset":5,"geo":{"streetNumber":"402","streetName":"Viman Nagar Road","subPremise":null,"city":"Pune","postalCode":"411014","state":"Maharashtra","stateCode":"MH","country":"India","countryCode":"IN","lat":18.5635987,"lng":73.9138383},"logo":"https://logo.clearbit.com/wittypen.com","facebook":{"handle":"wittypenplatform","likes":888},"linkedin":{"handle":"company/wittypen"},"twitter":{"handle":"wittypendotcom","id":"4023831318","bio":"Platform that helps individuals, startups and enterprises get content from credible writers. Are you a writer? Join us https://t.co/7lZz9z8LJJ","followers":651,"following":583,"location":"Pune, India","site":"https://t.co/Yvo0q6rWZY","avatar":"https://pbs.twimg.com/profile_images/906494554919993344/hj5bPCut_normal.jpg"},"crunchbase":{"handle":"organization/wittypen-media-services-pvt-ltd"},"emailProvider":false,"type":"private","ticker":null,"identifiers":{"usEIN":null},"phone":null,"metrics":{"alexaUsRank":null,"alexaGlobalRank":145350,"employees":60,"employeesRange":"51-250","marketCap":null,"raised":null,"annualRevenue":null,"estimatedAnnualRevenue":"$10M-$50M","fiscalYearEnd":null},"indexedAt":"2020-03-15T11:02:36.387Z","tech":["google_apps","facebook_advertiser","google_analytics","hotjar","google_tag_manager"],"techCategories":["productivity","advertising","analytics","website_optimization","tag_management"],"parent":{"domain":null},"ultimate_parent":{"domain":null}}});
+      }
+      Clearbit.prototype.done = function(response) {
+          if (response) {
+             this.setIPDimensions(response);
+             if (response.company){
+                 this.setDimensions(response.company);
+            }
+            return this.triggerEvent();
+         }
+       };
+        Clearbit.prototype.set = function(key, value) {
+         if (key && value) {
+           return this.tracker.set(key, value);
+         }
+       };
+        Clearbit.prototype.setIPDimensions = function(response) {
+         if (typeof response.type !== 'undefined') {
+           this.set(this.mapping.type, response.type)
+         }
+       }
+
+    Clearbit.prototype.setDimensions = function(company) {
+      var ref, ref1;
+      this.set(this.mapping.companyName, company.name);
+      this.set(this.mapping.companyDomain, company.domain);
+      this.set(this.mapping.companyType, company.type);
+      this.set(this.mapping.companyTags, (ref = company.tags) != null ? ref.join(',') : void 0);
+      this.set(this.mapping.companyTech, (ref1 = company.tech) != null ? ref1.join(',') : void 0);
+      this.set(this.mapping.companySector, company.category.sector);
+      this.set(this.mapping.companyIndustryGroup, company.category.industryGroup);
+      this.set(this.mapping.companyIndustry, company.category.industry);
+      this.set(this.mapping.companySubIndustry, company.category.subIndustry);
+      this.set(this.mapping.companySicCode, company.category.sicCode);
+      this.set(this.mapping.companyNaicsCode, company.category.naicsCode);
+      this.set(this.mapping.companyCountry, company.geo.countryCode);
+      this.set(this.mapping.companyState, company.geo.stateCode);
+      this.set(this.mapping.companyCity, company.geo.city);
+      this.set(this.mapping.companyFunding, company.metrics.raised);
+      this.set(this.mapping.companyEstimatedAnnualRevenue, company.metrics.estimatedAnnualRevenue);
+      this.set(this.mapping.companyEmployeesRange, company.metrics.employeesRange);
+      this.set(this.mapping.companyEmployees, company.metrics.employees);
+      return this.set(this.mapping.companyAlexaRank, company.metrics.alexaGlobalRank);
+    };
+
+    Clearbit.prototype.triggerEvent = function() {
+      return this.tracker.send(
+        'event',
+        'Clearbit',
+        'Enriched',
+        'Clearbit Enriched',
+        {nonInteraction: true}
+      );
+    };
+
+    return Clearbit;
+
+  })();
+
+  providePlugin('Clearbit', Clearbit);
+
+  
+
+  
+
+}).call(this);

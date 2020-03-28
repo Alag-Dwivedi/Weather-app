@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://files.mead.io/1079631c29ea -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    	
+  <title>weather</title>
+
+    <link rel="alternate" type="application/json+oembed" title="weather.png" href="https://oembed.getcloudapp.com/oembed?url=https%3A%2F%2Ffiles.mead.io%2FbLu6N0WZ&amp;format=json">
+    <link rel="alternate" type="application/xml+oembed" title="weather.png" href="https://oembed.getcloudapp.com/oembed?url=https%3A%2F%2Ffiles.mead.io%2FbLu6N0WZ&amp;format=xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="weather.png">
+  <meta property="og:url" content="https://files.mead.io/bLu6N0WZ">
+  <meta property="og:published_time" content="2018-11-15 19:54:13 UTC">
+  <meta property="og:description" content="Shared with CloudApp">
+  <meta name="twitter:card" value="summary_large_image">
+  <meta name="twitter:site" value="@cloudapp">
+  <meta name="twitter:image" value="https://f.v1.n0.cdn.getcloudapp.com/items/1J0Y1N1I441v1E2k3e2W/weather.png">
+  <meta name="twitter:title" value="weather.png">
+  <meta name="twitter:url" value="https://files.mead.io/bLu6N0WZ">
+  <meta name="twitter:description" value="Shared with CloudApp">
+  <meta property="og:image" content="http://f.v1.n0.cdn.getcloudapp.com/items/1J0Y1N1I441v1E2k3e2W/weather.png">
+  <meta property="og:image:secure_url" content="https://f.v1.n0.cdn.getcloudapp.com/items/1J0Y1N1I441v1E2k3e2W/weather.png">
+  <meta name="twitter:image" value="https://f.v1.n0.cdn.getcloudapp.com/items/1J0Y1N1I441v1E2k3e2W/weather.png">
+
+
+
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="Ru31czfpB5ckxzkWcu2asU/+OSPBnuroA5SeQbco6GSbnWJfcezf7LHa7rnv1aq/uooAmpV12AHCo8AiSyVbxw==">
+    
+    <title>CloudApp</title>
+
+    <link rel="stylesheet" media="all" href="./weather_files/application-b09c34511c42970a00122cd8c6e2216a78628eff4bb0935ef6198641b4033fe5.css">
+    <link rel="stylesheet" href="./weather_files/all.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://files.mead.io/assets/cloudapp-icon-c00dabfccf3d5dcc75f1551d87d4d618866291e4a236ac68453072125cfee036.png">
+
+    <script src="./weather_files/3053017.js.download" type="text/javascript" id="hs-analytics"></script><script src="./weather_files/leadflows.js.download" type="text/javascript" id="LeadFlows-3053017" crossorigin="anonymous" data-leadin-portal-id="3053017" data-leadin-env="prod" data-loader="hs-scriptloader" data-hsjs-portal="3053017" data-hsjs-env="prod"></script><script src="./weather_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./weather_files/js"></script><script src="./weather_files/390941011763468" async=""></script><script async="" src="./weather_files/fbevents.js.download"></script><script async="" src="./weather_files/uwt.js.download"></script><script type="text/javascript" async="" src="./weather_files/f.txt"></script><script async="" src="./weather_files/w.js.download"></script><script async="" src="./weather_files/w.js.download"></script><script type="text/javascript" async="" src="./weather_files/analytics.js.download"></script><script async="" src="./weather_files/gtm.js.download"></script><script async="" src="./weather_files/w.js.download"></script><script src="./weather_files/recurly.js.download"></script>
+    <script src="./weather_files/jquery.min.js.download"></script>
+    <script src="./weather_files/clipboard.min.js.download"></script>
+      <script src="./weather_files/vue"></script>
+    <script src="./weather_files/woopra-9cee0e8d3040b69abcd532de75ed560cc5eaafab2a91dc46e3613737f2b77a1b.js.download"></script>
+
+    <link rel="stylesheet" media="screen" href="./weather_files/video-js.min.css">
+    <script src="./weather_files/video.min.js.download"></script>
+    <script src="./weather_files/hls.js@latest"></script>
+    <script src="./weather_files/pusher.min.js.download"></script>
+<script>
+  let getPusherChannel = function(channelName) {
+    let pushConfig = {};
+    if(channelName === undefined && false ) {
+      channelName = "current_user.pusher_channel";
+    }  else if (channelName === undefined) {
+      return null;
+    }
+
+    if( window.sessionStorage.getItem('jwt') !== null) {
+      pushConfig = {
+        authEndpoint: '/api/v4/pusher_auth',
+        auth: {
+          headers: {
+            Authorization: window.sessionStorage.getItem('jwt'),
+          },
+        }
+      };
+    } else {
+      pushConfig['cluster'] = "mt1";
+    }
+
+
+    let pusher = new Pusher("d64531b5b7c8c513c88d", pushConfig);
+    return pusher.subscribe(channelName);
+  }
+
+  let $pusher = null;
+  $(document).ready(function() {
+    $pusher = getPusherChannel();
+  });
+</script>
+
+
+      <script>
+        window.sessionStorage.removeItem("jwt");
+      </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./weather_files/js(1)"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-32600009-9', { 'optimize_id': 'GTM-N5GKDD2'});
+</script>
+
+
+<!-- Start Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQ4HG7B');</script>
+<!-- End Google Tag Manager -->
+
+    <meta name="robots" content="noindex">
+  <script src="./weather_files/f(1).txt"></script></head>
+  <body id="viewer_v2" data-gr-c-s-loaded="true">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQ4HG7B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid" id="viewer-vue" data="{&quot;call_to_action&quot;:{&quot;id&quot;:null,&quot;item_id&quot;:14088168,&quot;text&quot;:&quot;Custom Action&quot;,&quot;link&quot;:null,&quot;button_color&quot;:&quot;#3f94fd&quot;,&quot;text_color&quot;:&quot;#ffffff&quot;,&quot;corner_style&quot;:&quot;cta-square&quot;,&quot;appearance&quot;:&quot;cta-button-below&quot;,&quot;display_action&quot;:true,&quot;created_at&quot;:null,&quot;updated_at&quot;:null},&quot;item&quot;:{&quot;id&quot;:14088168,&quot;created_at&quot;:&quot;2018-11-15T19:54:13.000Z&quot;,&quot;updated_at&quot;:&quot;2020-03-27T09:30:05.395Z&quot;,&quot;public&quot;:null,&quot;user_id&quot;:321115,&quot;device_id&quot;:null,&quot;organization_id&quot;:349147,&quot;password&quot;:null,&quot;url&quot;:&quot;http://f.cl.ly/items/1J0Y1N1I441v1E2k3e2W/weather.png&quot;,&quot;name&quot;:&quot;weather.png&quot;,&quot;status&quot;:&quot;completed&quot;,&quot;client&quot;:null,&quot;view_counter&quot;:5525,&quot;content_length&quot;:1760,&quot;server_completed_at&quot;:null,&quot;client_completed_at&quot;:null,&quot;preferences&quot;:{&quot;v1&quot;:1,&quot;v1_id&quot;:&quot;87823864&quot;,&quot;v1_prefs&quot;:{&quot;object_slug&quot;:&quot;1J0Y1N1I441v1E2k3e2W&quot;}},&quot;action_type&quot;:null,&quot;checksum&quot;:null,&quot;file_name&quot;:null,&quot;item_type&quot;:&quot;image&quot;,&quot;last_viewed_at&quot;:&quot;2020-03-27T09:30:05.382Z&quot;,&quot;transcoded&quot;:null,&quot;v1_slug&quot;:&quot;1079631c29ea&quot;,&quot;custom_storage_upload&quot;:null,&quot;archived_at&quot;:null,&quot;disabled&quot;:false}}">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span v-if="hoverLogo" v-on:mouseleave="hoverLogo = false" class="logo-container">
+      <a class="navbar-brand small-logo" data-testid="logo-link-back-to-dashboard" href="https://www.getcloudapp.com/?__hstc=237888735.7ce23d13986d74dad407760538c43f73.1585303296832.1585303296832.1585303296832.1&amp;__hssc=237888735.1.1585303296834&amp;__hsfp=170476807">
+        <img class="logo" src="./weather_files/logo@2x-blue-9fc5aedcea9d0af453a9da8b907222806d2934c5863d8be906fca70394bd3cbf.png">
+</a>    </span>
+    <span v-else="" v-on:mouseover="hoverLogo = true" class="logo-container">
+      <a class="navbar-brand small-logo" data-testid="logo-link-back-to-dashboard" href="https://www.getcloudapp.com/?__hstc=237888735.7ce23d13986d74dad407760538c43f73.1585303296832.1585303296832.1585303296832.1&amp;__hssc=237888735.1.1585303296834&amp;__hsfp=170476807">
+        <img class="logo" src="./weather_files/logo@2x-a1cdafe3f4bb6c1388a068783ec7b57f4f1641b698a97c7756d837db9771b7c7.png">
+</a>    </span>
+    <div class="login-signup-container">
+        <a href="https://share.getcloudapp.com/login?return_to=https%3A%2F%2Ffiles.mead.io%2F1079631c29ea&amp;__hstc=237888735.7ce23d13986d74dad407760538c43f73.1585303296832.1585303296832.1585303296832.1&amp;__hssc=237888735.1.1585303296834&amp;__hsfp=170476807">Log in</a>
+      <a id="get-cloudapp" class="cloudapp-btn blue" target="_blank" data-testid="get-cloudapp-button" href="https://www.getcloudapp.com/signup?__hstc=237888735.7ce23d13986d74dad407760538c43f73.1585303296832.1585303296832.1585303296832.1&amp;__hssc=237888735.1.1585303296834&amp;__hsfp=170476807">Get CloudApp for Free</a>
+    </div>
+</nav>
+
+      <div class="container">
+        <div class="flash alert alert-danger"></div>
+        <div class="flash alert alert-success"></div>
+        
+      </div>
+
+        
+<div class="cta-screen-filter" v-if="cta.menuOpen" v-on:click="cta.menuOpen = false"></div>
+<input id="item-share-url" value="https://files.mead.io/bLu6N0WZ">
+<div v-bind:class="{ &#39;cta-viewer-item-edit-mode&#39;: cta.menuOpen, &#39;viewer-height&#39;: !cta.menuOpen }" class="viewer-item image">
+    <div class="item-container">
+    <img src="./weather_files/weather.png" id="image-item" v-on:ended="cta.contentDone = true" class="mx-auto d-block img-fluid" alt="weather">
+</div>
+
+  
+  <cta-button v-if="displayCta" v-bind="cta.callToAction" redirect_link=""></cta-button>
+</div>
+
+<cta-menu :menu-open.sync="cta.menuOpen" v-bind.sync="cta.callToAction" ref="ctaMenu">
+</cta-menu>
+
+<script type="text/x-template" id="cta-template">
+  <div class="cta-menu container" v-if="menuOpen">
+    <h1 class="cta-title">Add Custom Action</h1>
+    <p class="cta-description">
+      Use a promo button to send your viewers somewhere from your file.
+      Link to book a meeting, to a support article, or to a product you’re selling.
+    </p>
+    <br>
+    <form action="/call_to_actions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="divN+TfqULLfAQM9GZJKJzRHPa5yK6XWNxl/lEpBfBKyDFx7Tv6rTLAm96vcNhcNkX+6jJXAD4rG8dEbhlX6Rw==" />
+
+      <input value="14088168" type="hidden" name="call_to_action[item_id]" id="call_to_action_item_id" />
+
+      <div class="form-group">
+        <label class="cta-input-label" for="call_to_action_text_button_text">Button text</label>
+        <input class="cta-form-control" v-model="menu_text" v-on:input="updateField(&#39;text&#39;)" data-testid="cta-button-text" type="text" value="Custom Action" name="call_to_action[text]" id="call_to_action_text" />
+      </div>
+
+      <div class="form-group">
+        <label class="cta-input-label" for="call_to_action_link_button_link_url">Button link (url)</label>
+        <input class="cta-form-control" v-model="menu_link" v-on:input="updateField(&#39;link&#39;)" data-testid="cta-link" type="url" name="call_to_action[link]" id="call_to_action_link" />
+      </div>
+
+      <div class="form-group">
+        <color-picker
+          v-if="buttonColorPicker"
+          theme="light"
+          :color="menu_button_color"
+          @changeColor="changeButtonColor"
+          data-testid="cta-button-color-picker"
+        />
+        <label class="cta-input-label" for="call_to_action_button_color">Button color</label>
+        <input v-model="menu_button_color" type="hidden" value="#3f94fd" name="call_to_action[button_color]" id="call_to_action_button_color" />
+        <color-input
+          field_name="button_color"
+          :value="menu_button_color"
+          v-on:toggle:picker="togglePicker('buttonColorPicker', $event)"
+          testid="cta-button-color">
+        </color-input>
+      </div>
+
+      <div class="form-group">
+        <color-picker
+          v-if="textColorPicker"
+          theme="light"
+          :color="menu_text_color"
+          @changeColor="changeTextColor"
+          data-testid="cta-text-color-picker"
+        />
+        <label class="cta-input-label" for="call_to_action_text_color">Text color</label>
+        <input v-model="menu_text_color" type="hidden" value="#ffffff" name="call_to_action[text_color]" id="call_to_action_text_color" />
+        <color-input
+          field_name="text_color"
+          :value="menu_text_color"
+          v-on:toggle:picker="togglePicker('textColorPicker', $event)"
+          testid="cta-text-color">
+        </color-input>
+      </div>
+
+      <div class="form-group">
+        <label class="cta-input-label" for="call_to_action_corner_style_border_corner_style">Border corner style</label>
+        <input v-model:corner_style="menu_corner_style" type="hidden" value="cta-square" name="call_to_action[corner_style]" id="call_to_action_corner_style" />
+        <cta-dropup
+          :value="menu_corner_style"
+          icon :options="corner_options"
+          field_name="corner_style"
+          testid="cta-corner-style-dropdown"
+          v-on:update:corner_style="dropupUpdateField('corner_style', $event)">
+        </cta-dropup>
+      </div>
+
+      <div class="form-group">
+        <label class="cta-input-label" for="call_to_action_appearance">Appearance</label>
+        <input v-model:appearance="menu_appearance" type="hidden" value="cta-button-below" name="call_to_action[appearance]" id="call_to_action_appearance" />
+        <cta-dropup
+          :value="menu_appearance"
+          :options="appearance_options"
+          field_name="appearance"
+          testid="cta-appearance-dropdown"
+          v-on:update:appearance="dropupUpdateField('appearance', $event)">
+        </cta-dropup>
+      </div>
+
+      <div class="form-check custom-control custom-switch">
+        <input name="call_to_action[display_action]" type="hidden" value="0" /><input class="custom-control-input" v-model="menu_display_action" data-testid="cta-display-action" v-on:change="updateField(&#39;display_action&#39;)" type="checkbox" value="1" checked="checked" name="call_to_action[display_action]" id="call_to_action_display_action" />
+        <label class="custom-control-label" for="call_to_action_display_action">Display action</label>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <input type="submit" name="commit" value="Create Button" class="cloudapp-btn blue btn-block cta-submit-button" :disabled="!formCompleted" data-testid="cta-submit" data-disable-with="Create Button" />
+      </div>
+
+      <div class="form-group">
+        <a href="#" v-on:click="closeMenu" class="cloudapp-btn white btn-block" data-testid="cta-cancel">
+            Cancel
+        </a>
+      </div>
+</form>  </div>
+</script>
+
+  <div class="item-actions">
+    <div class="name-container">
+         <div class="item-name">
+          <label data-testid="item-name">{{ name }}</label>
+        </div>
+    </div>
+    <div class="text-right">
+      <ul class="list-inline mb-md-0">
+          <li class="list-inline-item">
+            <a href="https://files.mead.io/1079631c29ea#" title="Embed Drop" data-toggle="modal" data-target="#embedModal" data-testid="footer-actions-embed">
+              <i class="fas fa-code align-text-top"></i>
+              <span class="action-label">Embed</span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a title="Download Drop" target="_blank" data-testid="footer-actions-download" href="https://files.mead.io/items/bLu6N0WZ/download">
+             <i class="fa fa-download align-text-top" data-toggle="tooltip" data-placement="top" title="Download"></i>
+             <span class="action-label">Download</span>
+</a>          </li>
+        </ul>
+    </div>
+  </div>
+
+<div class="modal cloudapp-modal narrow" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <img class="logo" src="./weather_files/logo@2x-a1cdafe3f4bb6c1388a068783ec7b57f4f1641b698a97c7756d837db9771b7c7.png">
+            <span class="title">Sign up</span>
+          </div>
+          <div>
+            <a href="https://files.mead.io/1079631c29ea#" class="cloudapp-btn white log-in" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Log in</a>
+          </div>
+        </div>
+        <div class="modal-body">
+          <ul class="errors text-danger"></ul>
+          <form data-type="json" action="https://files.mead.io/api/v4/account" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="Ru31czfpB5ckxzkWcu2asU/+OSPBnuroA5SeQbco6GSbnWJfcezf7LHa7rnv1aq/uooAmpV12AHCo8AiSyVbxw==">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required="required" class="form-control" style="border: 1px solid rgba(0,0,0,.125);">
+              <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" required="required" class="form-control" style="border: 1px solid rgba(0,0,0,.125);">
+            </div>
+            <div class="text-center">
+              <input type="submit" name="commit" value="Create my account" class="cloudapp-btn blue identifyUser create-account" data-disable-with="Create my account">
+            </div>
+          </form></div>
+          <div class="modal-footer text-center">
+            <a class="cloudapp-btn white google-signup google-login-button" href="https://files.mead.io/1079631c29ea#">
+              <img class="mr-2" width="19px" src="./weather_files/google_logo-4ca9e516eff3ec3f5dd1b56729676b81470a221e34d2e4a198422be7de62ca29.svg">
+              <span>Sign up with Google</span>
+</a>            <p class="have-an-account">
+              Have a CloudApp account?
+              <a href="https://files.mead.io/1079631c29ea#" class="cloudapp-link primary" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">
+                <span> Log in </span><i class="fas fa-arrow-right"></i>
+              </a>
+            </p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal cloudapp-modal" id="security-settings-modal-bLu6N0WZ" tabindex="-1" role="dialog" aria-labelledby="security-settings-modal-bLu6N0WZ" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form data-type="json" action="https://files.mead.io/api/v4/items/bLu6N0WZ" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="Ru31czfpB5ckxzkWcu2asU/+OSPBnuroA5SeQbco6GSbnWJfcezf7LHa7rnv1aq/uooAmpV12AHCo8AiSyVbxw==">
+        <div class="modal-header">
+          <div class="modal-title"><span class="title">Share settings</span></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="subtitle">Who can access this link?</div>
+          <div id="coll-sec-list">
+            <div class="custom-control custom-radio mt-2">
+              <input type="hidden" name="redirect_to" id="redirect_to" value="https://files.mead.io/bLu6N0WZ">
+              <input class="custom-control-input collapsed" id="coll-sec-link-radio" type="radio" value="un" checked="checked" name="sharing">
+              <label class="custom-control-label bullet-item" for="coll-sec-link-radio">Anyone with the link can view</label>
+            </div>
+            <div class="custom-control custom-radio mt-2">
+              <input class="custom-control-input collapsed" id="coll-sec-pwd-radio" data-toggle="collapse" data-target="#coll-sec-pwd-input" aria-expanded="false" aria-controls="coll-sec-pwd-input" type="radio" value="pw" name="sharing">
+              <label class="custom-control-label bullet-item" for="coll-sec-pwd-radio">Anyone with the link and password can view</label>
+            </div>
+            <div id="coll-sec-pwd-input" class="collapse" aria-labelledby="coll-sec-pwd" data-parent="#coll-sec-list">
+              <div class="card-body">
+                <input type="password" class="form-control" name="password" id="password">
+              </div>
+            </div>
+          </div>
+          <div class="custom-control custom-radio mt-2">
+            <input class="custom-control-input collapsed" id="coll-sec-emails-radio" data-toggle="collapse" data-target="#coll-sec-emails-input" aria-expanded="false" aria-controls="coll-sec-emails-input" type="radio" value="em" name="sharing">
+            <label class="custom-control-label bullet-item" for="coll-sec-emails-radio">Anyone as long they give their email address can view</label>
+          </div>
+          <div class="custom-control custom-radio mt-2">
+            <input class="custom-control-input collapsed" id="coll-sec-people-radio" data-toggle="collapse" data-target="#coll-sec-people-input" aria-expanded="false" aria-controls="coll-sec-people-input" type="radio" value="su" name="sharing">
+            <label class="custom-control-label bullet-item" for="coll-sec-people-radio">Only specific people can view</label>
+          </div>
+          <div id="coll-sec-people-input" class="collapse" aria-labelledby="coll-sec-people" data-parent="#coll-sec-list">
+            <div class="card-body">
+              <div class="form-group">
+                <input class="form-control" value="" placeholder="user@example.com, another@example.com" type="text" name="specific_users" id="specific_users">
+              </div>
+            </div>
+          </div>
+          <h6 class="mt-4 subtitle">When does this link expire?</h6>
+          <div class="dropdown bootstrap-select mt-2">
+            <select name="expires" id="expires" class="btn btn-outline-secondary bullet-item" v-model="selectedExpiration">
+              <option value="ne">Never</option>
+              <option value="">Advanced options...</option>
+            </select>
+          </div>
+          <div class="" id="coll-expires-list">
+            <div id="coll-expires-at-or-views-input" v-if="selectedExpiration != &#39;ne&#39;" aria-labelledby="coll-expires-at-or-views">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="expires_after_views">Expires after views</label>
+                  <input class="form-control bullet-item" placeholder="Expires after views" type="number" name="expires_after_views" id="expires_after_views">
+                </div>
+                <div class="form-group">
+                  <label for="expires_at">Expires at</label>
+                  <input class="form-control bullet-item" placeholder="Expires at" type="text" name="expires_at" id="expires_at">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <input type="submit" name="commit" value="Save share settings" class="btn cloudapp-btn blue" data-disable-with="Save share settings">
+          <div><button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button></div>
+        </div>
+</form>    </div>
+  </div>
+</div>
+
+<div class="modal cloudapp-modal narrow" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <img class="logo" src="./weather_files/logo@2x-a1cdafe3f4bb6c1388a068783ec7b57f4f1641b698a97c7756d837db9771b7c7.png">
+            <span class="title">Log in</span>
+          </div>
+          <div>
+            <a href="https://files.mead.io/1079631c29ea#" class="cloudapp-btn white log-in primary" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">Sign up</a>
+          </div>
+        </div>
+        <div class="modal-body">
+          <ul class="errors text-danger"></ul>
+          <form data-type="json" action="https://files.mead.io/api/v4/login" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="Ru31czfpB5ckxzkWcu2asU/+OSPBnuroA5SeQbco6GSbnWJfcezf7LHa7rnv1aq/uooAmpV12AHCo8AiSyVbxw==">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required="required" class="form-control" style="border: 1px solid rgba(0,0,0,.125);">
+              <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" required="required" class="form-control" style="border: 1px solid rgba(0,0,0,.125);">
+            </div>
+            <div class="text-center">
+              <input type="submit" name="commit" value="Log in" class="cloudapp-btn blue identifyUser create-account" data-disable-with="Log in">
+            </div>
+          </form></div>
+          <div class="modal-footer text-center">
+            <a class="cloudapp-btn white google-signup google-login-button" href="https://files.mead.io/1079631c29ea#">
+              <img class="mr-2" width="19px" src="./weather_files/google_logo-4ca9e516eff3ec3f5dd1b56729676b81470a221e34d2e4a198422be7de62ca29.svg">
+              <span>Log in with Google</span>
+</a>            <p class="have-an-account">
+              Don't have a CloudApp account?
+              <a href="https://files.mead.io/1079631c29ea#" class="cloudapp-link primary" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">
+                <span> Sign up </span><i class="fas fa-arrow-right"></i>
+              </a>
+            </p>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="embedModal" tabindex="-1" role="dialog" aria-labelledby="embedModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="embed-modal cloudapp-modal">
+        <div class="modal-header">
+          <div class="modal-title">
+            <span class="title">Embed HTML</span>
+          </div>
+          <div class="d-inline-block float-right">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <form id="embed">
+            <label>Add this drop to your website by copying the code below</label>
+            <div class="input-group mb-3">
+              <input class="form-control" id="embed-html" type="text" placeholder="Loading ..." readonly="">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-primary" data-clipboard-target="#embed-html"> Copy </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <input id="hide-title" type="checkbox" name="title">
+              <label for="hide-title"> Hide title in embed </label>
+              <br>
+              <input id="hide-branding" type="checkbox" name="branding">
+              <label for="hide-branding"> Hide branding in embed </label>
+            </div>
+          </form>
+          <h5>Preview</h5>
+          <div class="preview">
+            <div class="row">
+              <iframe width="575" height="400" style="border:none" frameborder="0" allowtransparency="true" allowfullscreen="true" src="./weather_files/saved_resource.html">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      <meta name="action-cable-url" content="ws://localhost:3334/cable">
+    </div>
+    <script src="./weather_files/application-3d1403de2dfd701e2884cd90d821245a0b9a34d095ee5a2ae959421f6dde651c.js.download"></script>
+    <script src="./weather_files/application-43527ed6707775f3b19f1535a4ef834719123652a1bf4cea300bda8f689057f9.js.download" type="module"></script>
+    <script>
+  var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
+
+  $("body").on("click", "[event]", function() {
+    eventName = $(this).attr("event");
+    dataContent = jQuery.isEmptyObject($(this).data()) ? $(this).attr("data") : $(this).data();
+    $.ajaxSetup( {
+      beforeSend: function ( xhr ) {
+        xhr.setRequestHeader( 'X-CSRF-Token', token );
+      }
+    });
+    $.post( "/tracking", { event: eventName, properties: dataContent } );
+  })
+</script>
+
+    <script src="./weather_files/woopra-9cee0e8d3040b69abcd532de75ed560cc5eaafab2a91dc46e3613737f2b77a1b.js.download"></script>
+<form id="google-login" action="https://files.mead.io/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="Ru31czfpB5ckxzkWcu2asU/+OSPBnuroA5SeQbco6GSbnWJfcezf7LHa7rnv1aq/uooAmpV12AHCo8AiSyVbxw==">
+  <input type="hidden" name="session[jwt]" id="session_jwt">
+</form>
+<script>
+  var googleClientId = "641478567492-2l5kcdhdl4ab3jfgtk7k8lu5qsn18ond.apps.googleusercontent.com";
+  var callbackUrl = "/auth/google_oauth2/callback";
+  function init() {
+    gapi.load('auth2', function() {
+      // Ready.
+      $('.google-login-button').click(function(e) {
+        e.preventDefault();
+        gapi.auth2.authorize({
+          client_id: googleClientId,
+          scope: 'email profile',
+          response_type: 'code'
+        }, function(response) {
+          if (response && !response.error) {
+            // google authentication succeed, now post data to server.
+            jQuery.ajax({
+              type: 'POST',
+              url: callbackUrl,
+              data: response,
+              headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+              },
+              success: function(response) {
+                woopra.identify({email: response.email});
+                woopra.track();
+                window.location = !!response.redirect_to ? response.redirect_to : '/dashboard';
+              },
+              error: function(request){
+                let response = request.responseJSON;
+                let errors   = response.errors && response.errors.join('\n');
+                let redirect = response.metadata && response.metadata.redirect_to;
+
+                if (errors)
+                  window.localStorage.setItem(
+                    'flash',
+                    JSON.stringify({type: 'danger', message: errors})
+                  );
+
+                if (redirect)
+                  window.location = redirect;
+              }
+            });
+          } else {
+            console.log(response.error)
+            // TODO: how to alert the user something went wrong?
+          }
+        });
+      });
+    });
+  };
+</script>
+<script src="./weather_files/platform.js.download" async="" defer="" gapi_processed="true"></script>
+
+    <iframe id="session-iframe" style="display: none;" src="./weather_files/session_iframe.html"></iframe>
+    <iframe style="display: none;" src="./weather_files/session_destroy.html"></iframe>
+    <script>
+ function iframePostMessageHandler(event) {
+     const { action, token, domains } = event.data;
+     if (action == 'returnData') {
+         var hostname = window.location.hostname;
+         if (domains === "") {
+             return;
+         }
+         if (!domains.split(",").includes(hostname)) {
+             return;
+         }
+         if (token === "") {
+             event.preventDefault();
+             window.location = "https://share.getcloudapp.com/login";
+             return;
+         }
+         if (window.location.search == "") {
+             window.location = `${window.location.href}?token=${token}`;
+         } else {
+             window.location = `${window.location.href}&token=${token}`;
+         }
+     }
+ }
+ window.addEventListener('message', iframePostMessageHandler, false);
+</script>
+
+      <script>
+   var iframe = document.getElementById('session-iframe');
+   iframe.onload = function() {
+       iframe.contentWindow.postMessage({ action: 'loginCustomDomain' }, '*');
+   };
+  </script>
+
+  
+
+
+<script type="text/javascript" id="">!function(d,e,f,a,b,c){d.twq||(a=d.twq=function(){a.exe?a.exe.apply(a,arguments):a.queue.push(arguments)},a.version="1.1",a.queue=[],b=e.createElement(f),b.async=!0,b.src="//static.ads-twitter.com/uwt.js",c=e.getElementsByTagName(f)[0],c.parentNode.insertBefore(b,c))}(window,document,"script");twq("init","nw7h7");twq("track","PageView");</script>
+<script type="text/javascript" id="">ga(function(){var a=ga.getAll()[0].get("name");ga(a+".require","Clearbit",{mapping:{companyName:"dimension1",companyDomain:"dimension2",companyTags:"dimension3",companySector:"dimension4",companyIndustryGroup:"dimension5",companyIndustry:"dimension6",companySubIndustry:"dimension7",companyType:"dimension8",companyEmployeesRange:"dimension9",companyAlexaRank:"dimension10",companyCity:"dimension11",companyState:"dimension12",companyCountry:"dimension13",companyFunding:"dimension14",companyTech:"dimension15"}})});</script>
+
+<script type="text/javascript" id="" src="./weather_files/ga.js.download"></script>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","390941011763468");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=390941011763468&amp;ev=PageView&amp;noscript=1"></noscript>
+<script type="text/javascript" id="">var onWindow=function(b,a){"undefined"!==typeof window.addEventListener?window.addEventListener(b,a,!1):window.attachEvent("on"+b,function(){a.call(window)})},onWindowLeave=function(b){onWindow("mouseout",function(a){a=a?a:window.event;(a=a.relatedTarget||a.toElement)&&"HTML"!==a.nodeName||"function"===typeof b&&b()})};onWindowLeave(function(){dataLayer.push({event:"exit_intent"})});</script>
+
+<script type="text/javascript" id="hs-script-loader" src="./weather_files/3053017.js(1).download"></script>
+<script src="./weather_files/adsct" type="text/javascript"></script></body></html>
